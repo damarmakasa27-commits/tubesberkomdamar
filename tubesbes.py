@@ -8,9 +8,7 @@ Program ini memberikan rekap hasil akhir penjualan, pajak, ongkir, keuntungan,
 dan emisi CO₂ dari berbagai jenis bahan galian.
 """)
 
-# ============================
 # INPUT DASAR
-# ============================
 st.header("Input Dasar")
 
 N = st.number_input("Masukkan jumlah jenis bahan galian:", min_value=1, step=1)
@@ -32,9 +30,7 @@ listrik_list = []
 faktor_emisi_diesel = 2.68
 faktor_emisi_listrik = 0.85
 
-# ============================
 # INPUT DATA PER BAHAN
-# ============================
 st.header("Input Data Tiap Bahan Galian")
 
 for i in range(N):
@@ -57,16 +53,14 @@ for i in range(N):
     diesel_list.append(diesel)
     listrik_list.append(listrik)
 
-# ============================
 # PERHITUNGAN
-# ============================
 if st.button("Hitung Summary"):
     stok_tidak_cukup = any(jumlah_beli[i] > stok[i] for i in range(N))
 
     if stok_tidak_cukup:
-        st.error("❌ Ada jumlah pembelian yang melebihi stok!")
+        st.error("Ada jumlah pembelian yang melebihi stok!")
     else:
-        st.success("✔️ Perhitungan berhasil!")
+        st.success("Perhitungan berhasil!")
 
         total_pajak = 0
         total_emisi = 0
@@ -110,9 +104,7 @@ if st.button("Hitung Summary"):
         # Keuntungan
         keuntungan = total_penjualan - biaya_operasional
 
-        # ============================
         # RINGKASAN AKHIR
-        # ============================
         st.header("Ringkasan Akhir")
         st.write(f"Total harga sebelum pajak & ongkir: **{total_sebelum:,.0f}**")
         st.write(f"Total pajak: **{total_pajak:,.0f}**")
@@ -121,9 +113,7 @@ if st.button("Hitung Summary"):
         st.write(f"Total keuntungan: **{keuntungan:,.0f}**")
         st.write(f"Total emisi CO₂ seluruh produksi: **{total_emisi:.2f} kg**")
 
-        # ============================
         # GRAFIK 1 – Jumlah Pembelian
-        # ============================
         st.header("Grafik Jumlah Pembelian Bahan Galian")
 
         plt.figure(figsize=(7, 4))
@@ -133,9 +123,7 @@ if st.button("Hitung Summary"):
         plt.xticks(rotation=20)
         st.pyplot(plt)
 
-        # ============================
         # GRAFIK 2 – Emisi Per Bahan
-        # ============================
         st.header("Grafik Emisi CO₂ per Bahan")
 
         plt.figure(figsize=(7, 4))
