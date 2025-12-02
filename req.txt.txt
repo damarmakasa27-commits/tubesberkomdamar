@@ -1,5 +1,9 @@
-matplotlib.pyplot==3.10.7
+matplotlib==3.10.7
 pandas==2.3.3
 numpy=2.3.5
-
 streamlit
+pytz==2025.2
+dateutil==2.9.0.post0
+jinja2==3.1.6
+pyarrow==21.0.0
+tzdata==2025.2
